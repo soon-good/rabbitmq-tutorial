@@ -1,5 +1,6 @@
 package io.study.rabbitmq.tutorial_consumer.config.models;
 
+import io.study.rabbitmq.tutorial_consumer.consumer.PubSubsConsumer1;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +40,12 @@ public class PubSubsConfig {
         @Bean
         public Binding binding2(FanoutExchange fanoutExchange, Queue autoDeleteQueue2){
             return BindingBuilder.bind(autoDeleteQueue2).to(fanoutExchange);
+        }
+
+        @Profile("publisher-subscriber-test1")
+        @Bean
+        public PubSubsConsumer1 receiver(){
+            return new PubSubsConsumer1();
         }
     }
 }
