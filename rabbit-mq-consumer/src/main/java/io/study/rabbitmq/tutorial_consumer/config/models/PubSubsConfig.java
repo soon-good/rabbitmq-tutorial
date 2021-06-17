@@ -19,33 +19,9 @@ public class PubSubsConfig {
         return new FanoutExchange(EXCHANGE_NAME_FANOUT_TUT1);
     }
 
-    @Profile("publisher-subscriber-test1")
-    private static class ConsumerConfig{
-
-        @Bean
-        public Queue autoDeleteQueue1(){
-            return new AnonymousQueue();
-        }
-
-        @Bean
-        public Queue autoDeleteQueue2(){
-            return new AnonymousQueue();
-        }
-
-        @Bean
-        public Binding binding1(FanoutExchange fanoutExchange, Queue autoDeleteQueue1){
-            return BindingBuilder.bind(autoDeleteQueue1).to(fanoutExchange);
-        }
-
-        @Bean
-        public Binding binding2(FanoutExchange fanoutExchange, Queue autoDeleteQueue2){
-            return BindingBuilder.bind(autoDeleteQueue2).to(fanoutExchange);
-        }
-
-        @Profile("publisher-subscriber-test1")
-        @Bean
-        public PubSubsConsumer1 receiver(){
-            return new PubSubsConsumer1();
-        }
+    @Bean
+    public Binding binding(Queue queue, FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(queue).to(fanoutExchange);
     }
+
 }

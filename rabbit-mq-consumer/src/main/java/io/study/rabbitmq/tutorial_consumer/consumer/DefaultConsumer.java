@@ -1,18 +1,16 @@
 package io.study.rabbitmq.tutorial_consumer.consumer;
 
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import static io.study.rabbitmq.tutorial_consumer.config.RabbitConfiguration.QUEUE_NAME_SAMPLE1;
-
+@Profile("default-exchange-test1")
 @Service
 public class DefaultConsumer {
 
-    @RabbitListener(queues = {QUEUE_NAME_SAMPLE1}, concurrency = "3-5")
-    public void consume(Message message){
-        System.out.println("[메시지 (consume)] :: " + String.valueOf(message));
-    }
+//    @RabbitListener(queues = {QUEUE_NAME_SAMPLE1}, concurrency = "3-5")
+//    public void consume(Message message){
+//        System.out.println("[메시지 (consume)] :: " + String.valueOf(message));
+//    }
 
 //    @RabbitListener(
 //            concurrency = "3-5",

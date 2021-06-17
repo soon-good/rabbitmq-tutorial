@@ -1,4 +1,4 @@
-package io.study.rabbitmq.tutorial_producer.producer;
+package io.study.rabbitmq.tutorial_consumer.producer;
 
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -25,7 +25,7 @@ public class PubSubsProducer1 {
         this.fanoutExchange = fanoutExchange;
     }
 
-//    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+    @Scheduled(fixedDelay = 100, initialDelay = 500)
     public void send(){
         StringBuilder builder = new StringBuilder("Hello");
 

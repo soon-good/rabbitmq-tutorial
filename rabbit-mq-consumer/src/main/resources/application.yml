@@ -8,10 +8,10 @@ spring:
     activate:
       on-profile: default-exchange-test1
   rabbitmq:
-    host: --
+    host: 접속주소
     port: 5671
     username: mqadmin
-    password: --
+    password: 비밀번호
     ssl:
       enabled: true
     listener:
@@ -24,10 +24,10 @@ spring:
     activate:
       on-profile: publisher-subscriber-test1
   rabbitmq:
-    host: --
+    host: 접속주소
     port: 5671
     username: mqadmin
-    password: --
+    password: 비밀번호
     ssl:
       enabled: true
     listener:
@@ -40,10 +40,10 @@ spring:
     activate:
       on-profile: topic-test1
   rabbitmq:
-    host: --
+    host: 접속주소
     port: 5671
     username: mqadmin
-    password: --
+    password: 비밀번호
     ssl:
       enabled: true
     listener:
