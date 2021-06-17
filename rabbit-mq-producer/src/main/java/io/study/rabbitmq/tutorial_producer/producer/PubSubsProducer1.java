@@ -33,6 +33,7 @@ public class PubSubsProducer1 {
 
         builder.append(count.incrementAndGet());
         String message = builder.toString();
+        // Publisher, Subscriber 모델은 브로드캐스팅 모델이므로 라우팅키가 무의미하다. 따라서 routingKey 를 공백문자("")로 지정.
         rabbitTemplate.convertAndSend(fanoutExchange.getName(), "", message);
         System.out.println(" [x] Sent '" + message + "'");
     }

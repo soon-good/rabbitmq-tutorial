@@ -1,5 +1,6 @@
 package io.study.rabbitmq.tutorial_producer.config.models;
 
+import io.study.rabbitmq.tutorial_producer.producer.PubSubsProducer1;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,9 @@ public class PubSubsConfig {
         return new FanoutExchange(EXCHANGE_NAME_FANOUT_TUT1);
     }
 
-//    @Bean
-//    public
+    @Profile({"publisher-subscriber-test1"})
+    @Bean
+    public PubSubsProducer1 producer(){
+        return new PubSubsProducer1();
+    }
 }
