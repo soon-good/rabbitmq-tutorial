@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: default-exchange-test1
+---
+# 제일 처음 연습해본 예제. Publish 를 직접 화면에서 클릭해서 넣어야 한다는 단점이 있다.
+spring:
+  config:
+    activate:
+      on-profile: default-exchange-test1
+  rabbitmq:
+    host:  --
+    port: 5671
+    username: mqadmin
+    password:  --
+    ssl:
+      enabled: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+---
+# Publisher / Subscriber 기반 프로필 (1)
+spring:
+  config:
+    activate:
+      on-profile: publisher-subscriber-test1
+  rabbitmq:
+    host: --
+      port: 5671
+      username: mqadmin
+      password:  --
+    ssl:
+      enabled: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+---
+# 토픽 기반 모델 프로필 (1)
+spring:
+  config:
+    activate:
+      on-profile: topic-test1
+  rabbitmq:
+    host:  --
+    port: 5671
+    username: mqadmin
+    password:  --
+    ssl:
+      enabled: true
+    listener:
+      simple:
+        acknowledge-mode: manual
