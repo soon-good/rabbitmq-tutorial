@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MqhelloworldApplication {
+public class MqProducerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MqhelloworldApplication.class, args);
+		SpringApplication.run(MqProducerApplication.class, args);
 	}
 
 }
