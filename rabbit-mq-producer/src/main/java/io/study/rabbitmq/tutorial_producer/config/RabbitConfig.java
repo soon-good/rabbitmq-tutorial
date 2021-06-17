@@ -11,13 +11,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String SPRING_AMQP_QUEUE = "publisher-subscriber-1";
-
-    @Bean
-    public Queue springAmqpQueue(){
-        return new Queue(SPRING_AMQP_QUEUE);
-    }
-
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);

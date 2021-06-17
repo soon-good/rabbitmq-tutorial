@@ -1,6 +1,5 @@
 package io.study.rabbitmq.tutorial_consumer.config.models;
 
-import io.study.rabbitmq.tutorial_consumer.consumer.PubSubsConsumer1;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +12,12 @@ import org.springframework.context.annotation.Profile;
 public class PubSubsConfig {
 
     public static final String EXCHANGE_NAME_FANOUT_TUT1 = "tut.fanout";
+    public static final String QUEUE_PUBLISHER_SUBSCRIBER1 = "publisher-subscriber-1";
+
+    @Bean
+    public Queue queuePublisherSubscriber1(){
+        return new Queue(QUEUE_PUBLISHER_SUBSCRIBER1);
+    }
 
     @Bean
     public FanoutExchange fanout(){

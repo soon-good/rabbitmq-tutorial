@@ -1,6 +1,6 @@
 package io.study.rabbitmq.tutorial_consumer.consumer;
 
-import io.study.rabbitmq.tutorial_consumer.config.RabbitConfig;
+import io.study.rabbitmq.tutorial_consumer.config.models.PubSubsConfig;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.annotation.Profile;
@@ -11,7 +11,7 @@ import org.springframework.util.StopWatch;
 @Service
 public class PubSubsConsumer1 {
 
-    @RabbitListener(queues = {RabbitConfig.SPRING_AMQP_QUEUE})
+    @RabbitListener(queues = {PubSubsConfig.QUEUE_PUBLISHER_SUBSCRIBER1})
     public void receive1(final Message in) throws InterruptedException {
 //        receive(in, 1);
         System.out.println("in >>> " + String.valueOf(in));
