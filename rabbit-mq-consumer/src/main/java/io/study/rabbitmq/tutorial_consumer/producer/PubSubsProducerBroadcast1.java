@@ -3,11 +3,14 @@ package io.study.rabbitmq.tutorial_consumer.producer;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static io.study.rabbitmq.tutorial_consumer.config.models.PubSubsBroadCastConfig1.BEAN_FANOUT_TO_MULTIPLE_QUEUE;
 
 @Profile("publisher-subscriber-broadcast1")
 @Service
@@ -19,7 +22,8 @@ public class PubSubsProducerBroadcast1 {
     AtomicInteger count = new AtomicInteger(0);
 
     @Autowired
-    public PubSubsProducerBroadcast1(RabbitTemplate rabbitTemplate, FanoutExchange fanoutExchange){
+    public PubSubsProducerBroadcast1(RabbitTemplate rabbitTemplate,
+                                     @Qualifier(BEAN_FANOUT_TO_MULTIPLE_QUEUE) FanoutExchange fanoutExchange){
         this.rabbitTemplate = rabbitTemplate;
         this.fanoutExchange = fanoutExchange;
     }
