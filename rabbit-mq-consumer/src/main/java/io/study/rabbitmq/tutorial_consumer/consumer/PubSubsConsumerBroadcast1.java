@@ -10,12 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class PubSubsConsumerBroadcast1 {
 
-    // @RabbitListener(queues = {PubSubsBroadCastConfig1.QUEUE_PUBLISHER_SUBSCRIBER1, PubSubsBroadCastConfig1.QUEUE_PUBLISHER_SUBSCRIBER2})
-    public void receive(final Message in) throws InterruptedException {
-        System.out.println("메시지(Message) >>> " + String.valueOf(in));
-        System.out.println("메시지 바디(Message.Body) >>> " + in.getBody().toString());
-    }
-
     @RabbitListener(queues = PubSubsBroadCastConfig1.QUEUE_PUBLISHER_SUBSCRIBER1)
     public void receive1(final Message in) throws InterruptedException {
         System.out.println("[1번 큐] 메시지(Message) >>> " + String.valueOf(in));

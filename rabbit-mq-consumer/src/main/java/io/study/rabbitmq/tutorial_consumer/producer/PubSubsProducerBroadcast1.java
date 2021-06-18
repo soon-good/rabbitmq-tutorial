@@ -28,7 +28,7 @@ public class PubSubsProducerBroadcast1 {
         this.fanoutExchange = fanoutExchange;
     }
 
-    @Scheduled(fixedDelay = 100, initialDelay = 500)
+    @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send(){
         StringBuilder builder = new StringBuilder("Hello");
 
