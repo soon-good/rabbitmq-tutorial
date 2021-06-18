@@ -1,6 +1,7 @@
 spring:
   profiles:
-    active: publisher-subscriber-test1
+    active: publisher-subscriber-broadcast1
+#    active: publisher-subscriber-test1
 ---
 # 제일 처음 연습해본 예제. Publish 를 직접 화면에서 클릭해서 넣어야 한다는 단점이 있다.
 spring:
@@ -23,6 +24,22 @@ spring:
   config:
     activate:
       on-profile: publisher-subscriber-test1
+  rabbitmq:
+    host: 접속주소
+    port: 5671
+    username: mqadmin
+    password: 비밀번호
+    ssl:
+      enabled: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+---
+# Publisher /Subscriber 기반 프로필 (2) : 2 개 이상의 큐에 메시지 전달하기
+spring:
+  config:
+    activate:
+      on-profile: publisher-subscriber-broadcast1
   rabbitmq:
     host: 접속주소
     port: 5671

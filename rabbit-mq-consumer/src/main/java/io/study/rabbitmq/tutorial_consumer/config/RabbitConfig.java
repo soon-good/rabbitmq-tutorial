@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-@Profile("publisher-subscriber-test1")
+@Profile({"publisher-subscriber-test1", "publisher-subscriber-broadcast1"})
 @Configuration
 //@EnableScheduling
 public class RabbitConfig {
@@ -17,7 +17,6 @@ public class RabbitConfig {
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-//        rabbitTemplate.setMessageConverter(converter());
         rabbitTemplate.setMessageConverter(messageConverter);
         return rabbitTemplate;
     }

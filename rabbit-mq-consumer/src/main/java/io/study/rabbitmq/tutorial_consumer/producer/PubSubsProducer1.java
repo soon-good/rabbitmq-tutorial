@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Profile("publisher-subscriber-test1")
+@Profile({"publisher-subscriber-test1"})
 @Service
 public class PubSubsProducer1 {
 

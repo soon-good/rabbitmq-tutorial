@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Profile("publisher-subscriber-test1")
+@Profile("publisher-subscriber-broadcast1")
 @Service
-public class PubSubsProducer1 {
-
+public class PubSubsProducerBroadcast1 {
     private final RabbitTemplate rabbitTemplate;
     private final FanoutExchange fanoutExchange;
 
@@ -20,12 +19,12 @@ public class PubSubsProducer1 {
     AtomicInteger count = new AtomicInteger(0);
 
     @Autowired
-    public PubSubsProducer1(RabbitTemplate rabbitTemplate, FanoutExchange fanoutExchange){
+    public PubSubsProducerBroadcast1(RabbitTemplate rabbitTemplate, FanoutExchange fanoutExchange){
         this.rabbitTemplate = rabbitTemplate;
         this.fanoutExchange = fanoutExchange;
     }
 
-    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+    @Scheduled(fixedDelay = 100, initialDelay = 500)
     public void send(){
         StringBuilder builder = new StringBuilder("Hello");
 
@@ -41,6 +40,6 @@ public class PubSubsProducer1 {
         String message = builder.toString();
         // Publisher, Subscriber 모델은 브로드캐스팅 모델이므로 라우팅키가 무의미하다. 따라서 routingKey 를 공백문자("")로 지정.
         rabbitTemplate.convertAndSend(fanoutExchange.getName(), "", message);
-        System.out.println(" [x] Sent '" + message + "'");
+        System.out.println(" 프로듀서가 메시지를 보냅니다. ['" + message + "']");
     }
 }
